@@ -50,7 +50,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'image',
                     'content' => function($model){
                         /** @var \common\models\Product $model */
-                        return Html::img($model->getImageUrl(),['style'=>'width:50px;pointer-events: none;user-drag: none;user-select: none;']);
+
+                        $content = Html::img($model->getImageUrl(),['style'=>'width:50px;pointer-events: none;user-drag: none;user-select: none;']);
+
+                        if(!$model->image) {
+                                return Html::img($model->getNoImageUrl(),['style'=>'width:50px;pointer-events: none;user-drag: none;user-select: none;']);
+                        }
+                        else
+                            return $content;
                     },
             ],
             [
@@ -87,8 +94,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'style'=>'text-align: center;white-space:nowrap'
                 ]
             ],
-//            'created_by',
-//            'updated_by',
+//            'created_by.username',
+//            'updated_by.username',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Product $model, $key, $index, $column) {

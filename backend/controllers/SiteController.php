@@ -24,11 +24,11 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error','forgot-password'],
+                        'actions' => ['login', 'error','forgot-password','profile'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index','forgot-password','profile'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -80,6 +80,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $user=Yii::$app->user;
             return $this->goBack();
         }
 
@@ -105,4 +106,16 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+    /**
+     * Profile action.
+     *
+     * @return string|Response
+     */
+
+    public function actionProfile(){
+        return $this->render('profile');
+    }
+
+
+
 }

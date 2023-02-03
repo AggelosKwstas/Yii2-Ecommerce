@@ -11,6 +11,9 @@ use common\models\Product;
  */
 class ProductSearch extends Product
 {
+
+    public $globalSearch;
+
     /**
      * {@inheritdoc}
      */
@@ -18,7 +21,7 @@ class ProductSearch extends Product
     {
         return [
             [['id', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
-            [['name', 'description', 'image'], 'safe'],
+            [['name', 'description', 'image','globalSearch'], 'safe'],
             [['price'], 'number'],
         ];
     }
@@ -57,20 +60,23 @@ class ProductSearch extends Product
             return $dataProvider;
         }
 
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'price' => $this->price,
-            'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'created_by' => $this->created_by,
-            'updated_by' => $this->updated_by,
-        ]);
+//        // grid filtering conditions
+//        $query->andFilterWhere([
+//            'id' => $this->id,
+//            'price' => $this->price,
+//            'status' => $this->status,
+//            'created_at' => $this->created_at,
+//            'updated_at' => $this->updated_at,
+//            'created_by' => $this->created_by,
+//            'updated_by' => $this->updated_by,
+//        ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'image', $this->image]);
+        $query->orFilterWhere(['like', 'name', $this->globalSearch])
+            ->orFilterWhere(['like', 'description', $this->globalSearch])
+            ->orFilterWhere(['like', 'image', $this->globalSearch])
+            ->orFilterWhere(['like', 'id', $this->globalSearch])
+            ->orFilterWhere(['like', 'created_at', $this->globalSearch])
+            ->orFilterWhere(['like', 'updated_at', $this->globalSearch]);
 
         return $dataProvider;
     }

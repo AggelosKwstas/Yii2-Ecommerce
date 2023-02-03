@@ -155,9 +155,7 @@ class Product extends \yii\db\ActiveRecord
                 return false;
             }
         }
-
         $transaction->commit();
-
         return $ok;
     }
 

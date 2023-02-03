@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /** @var yii\web\View $this */
 /** @var backend\models\ProductSearch $searchModel */
@@ -20,12 +21,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <?php Pjax::begin();?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
         'options' => [
         'style'=>'text-align:center'
 ],
@@ -49,11 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'image',
                     'content' => function($model){
                         /** @var \common\models\Product $model */
-                        return Html::img($model->getImageUrl(),['style'=>'width:50px']);
+                        return Html::img($model->getImageUrl(),['style'=>'width:50px;pointer-events: none;user-drag: none;user-select: none;']);
                     },
-                'contentOptions' => [
-                    'style'=>'text-align: center;width:5%'
-                ]
             ],
             [
                 'attribute' => 'price',
@@ -89,8 +87,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'style'=>'text-align: center;white-space:nowrap'
                 ]
             ],
-            //'created_by',
-            //'updated_by',
+//            'created_by',
+//            'updated_by',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Product $model, $key, $index, $column) {
@@ -99,6 +97,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
-
+    <?php Pjax::end(); ?>
 </div>

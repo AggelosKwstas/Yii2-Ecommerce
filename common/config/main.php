@@ -13,5 +13,9 @@ return [
         'cache' => [
             'class' => \yii\caching\FileCache::class,
         ],
+        'formatter'=>[
+            'datetimeFormat' => 'php:d/m/Y H:i',
+            'currencyCode' => 'EUR'
+        ]
     ],
 ];

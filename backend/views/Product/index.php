@@ -26,24 +26,42 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options' => [
+        'style'=>'text-align:center'
+],
 
         'columns' => [
 
             [
                     'attribute' => 'id',
                     'contentOptions' => [
-                            'style'=>'text-align: center'
+                            'style'=>'text-align: center;width:3%'
 ]
 ],
-            'name',
             [
+                    'attribute' => 'name',
+                    'contentOptions' => [
+                            'style'=>'text-align: center'
+                    ]
+            ],
+            [
+                    'label'=>'Image',
                     'attribute' => 'image',
                     'content' => function($model){
                         /** @var \common\models\Product $model */
                         return Html::img($model->getImageUrl(),['style'=>'width:50px']);
-                    }
+                    },
+                'contentOptions' => [
+                    'style'=>'text-align: center;width:5%'
+                ]
             ],
-            'price:currency',
+            [
+                'attribute' => 'price',
+                'format'=>'currency',
+                'contentOptions' => [
+                    'style'=>'text-align: center'
+                ]
+            ],
             [
 
                     'attribute' => 'status',
@@ -52,10 +70,25 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::tag('span',$model->status ? 'Active' : 'Draft',[
                                 'class'=>$model->status ? 'badge badge-success' : 'badge badge-danger'
                         ]);
-                    }
+                    },
+                'contentOptions' => [
+                    'style'=>'text-align: center'
+                ]
 ],
-            'created_at:datetime',
-            'updated_at:datetime',
+            [
+            'attribute' => 'created_at',
+            'format' => 'datetime',
+            'contentOptions' => [
+                'style'=>'text-align: center;white-space:nowrap'
+            ]
+],
+            [
+                'attribute' => 'updated_at',
+                'format' => 'datetime',
+                'contentOptions' => [
+                    'style'=>'text-align: center;white-space:nowrap'
+                ]
+            ],
             //'created_by',
             //'updated_by',
             [

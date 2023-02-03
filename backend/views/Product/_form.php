@@ -13,10 +13,10 @@ use yii\bootstrap4\ActiveForm;
 ?>
 <div class="product-form">
     <?php $form = ActiveForm::begin([
-        'options' => ['enctype' => 'multipart/form-data'],
+        'options' => ['enctype' => 'multipart/form-data']
     ]); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name',)->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->widget(CKEditor::class, [
         'options' => ['rows' => 6],

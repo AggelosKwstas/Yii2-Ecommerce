@@ -9,7 +9,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form yii\bootstrap4\ActiveForm */
 ?>
 <?php
-// ALLIGN FORM TO CENTER
+
 ?>
 <div class="product-form">
     <?php $form = ActiveForm::begin([

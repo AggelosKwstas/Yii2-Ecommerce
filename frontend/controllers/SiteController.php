@@ -8,6 +8,7 @@ use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 use yii\helpers\Console;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -38,7 +39,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['signup'],
                         'allow' => true,
-                        'roles' => ['?'],
+                        'roles' => [''],
                     ],
                     [
                         'actions' => ['logout'],
@@ -80,11 +81,15 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Product::find()->published()
+            'query' => Product::find()->published(),
+            'pagination' => [
+                'pageSize'=>2
+            ]
         ]);
 
+
         return $this->render('index', [
-            'dataProvider' => $dataProvider
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -121,41 +126,6 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return mixed
-     */
-    public function actionContact()
-    {
-        if(Yii::$app->user->can('contact')){
-            $model = new ContactForm();
-            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-                if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                    Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-                } else {
-                    Yii::$app->session->setFlash('error', 'There was an error sending your message.');
-                }
-                return $this->refresh();
-            }
-
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
-        }else
-         Throw new ForbiddenHttpException;
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 
     /**

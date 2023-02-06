@@ -3,6 +3,8 @@
 namespace frontend\controllers;
 
 use common\models\Product;
+use common\models\User;
+use common\models\UserAddress;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -20,6 +22,8 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 
 
+
+
 /**
  * Site controller
  */
@@ -32,8 +36,8 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'class' => AccessControl::class,
+                'only' => ['logout', 'signup','profile'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -44,6 +48,11 @@ class SiteController extends Controller
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                      'actions'=>['profile'],
+                      'allow'=>true,
+                      'roles'=>['@'],
                     ],
                 ],
             ],
@@ -82,7 +91,7 @@ class SiteController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => Product::find()->published(),
             'pagination' => [
-                'pageSize'=>3
+                'pageSize' => 3
             ]
         ]);
 
@@ -123,7 +132,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
 
@@ -134,14 +142,14 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
-            $model = new SignupForm();
-            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-                Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-                return $this->goHome();
-            }
-            return $this->render('signup', [
-                'model' => $model,
-            ]);
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            return $this->goHome();
+        }
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -197,8 +205,8 @@ class SiteController extends Controller
      * Verify email address
      *
      * @param string $token
-     * @throws BadRequestHttpException
      * @return yii\web\Response
+     * @throws BadRequestHttpException
      */
     public function actionVerifyEmail($token)
     {
@@ -236,4 +244,43 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    /**
+     * View Profile
+     *
+     * @return mixed
+     */
+    public function actionProfile()
+    {
+
+        /** @var User $user */
+
+        $user = Yii::$app->user->identity;
+
+        $userAddresses = $user->addresses;
+        $userAddress = $user->getAddress();
+        if (!empty($userAddresses)) {
+            $userAddress = $userAddresses[0];
+        }
+
+        return $this->render('profile', [
+            'user' => $user,
+            'userAddress' => $userAddress
+        ]);
+    }
+
+    public function actionUpdateAddress(){
+        $user = Yii::$app->user->identity;
+        $userAddress = $user->getAddress();
+        $success  = false;
+        if($userAddress->load(Yii::$app->request->post()) && $userAddress->save()){
+            $success=true;
+        }
+        return $this->renderAjax('user_address',[
+            'userAddress' => $userAddress,
+            'success' => $success
+        ]);
+
+    }
+
 }

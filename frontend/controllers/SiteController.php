@@ -101,8 +101,11 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionView($model){
-        die();
+    public function actionView($model_id){
+        $product = Product::findOne($model_id);
+        return $this->render('view', [
+            'product' => $product,
+        ]);
 }
 
 

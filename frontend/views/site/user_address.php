@@ -7,14 +7,16 @@ use yii\bootstrap4\ActiveForm;
 /* @var $userAddress */
 /* @var $success bool */
 ?>
-
-<?php \yii\widgets\Pjax::begin()?>
+<?php \yii\widgets\Pjax::begin([
+        'enablePushState'=>false
+])?>
 <?php $addressForm = ActiveForm::begin([
     'action' => ['/site/update-address'],
     'options' => [
         'data-pjax'=>1
     ]
 ]); ?>
+<?= common\widgets\Alert::widget() ?>
 <?= $addressForm->field($userAddress, 'address') ?>
     <br>
 <?= $addressForm->field($userAddress, 'city') ?>

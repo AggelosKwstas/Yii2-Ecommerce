@@ -2,13 +2,15 @@
 
 
 /** @var \common\models\User $user */
-
+/* @var $this \yii\web\View */
 /** @var \common\models\UserAddress $userAddress */
 
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
 
 ?>
+
+
 
 <div class="row">
     <div class="col">
@@ -17,23 +19,9 @@ use yii\bootstrap4\Html;
                 Address Information
             </div>
             <div class="card-body">
-                <?php \yii\widgets\Pjax::begin()?>
-                <?php $addressForm = ActiveForm::begin([
-                    'action' => ['site/update-address']
-                ]); ?>
-                <?= $addressForm->field($userAddress, 'address') ?>
-                <br>
-                <?= $addressForm->field($userAddress, 'city') ?>
-                <br>
-                <?= $addressForm->field($userAddress, 'state') ?>
-                <br>
-                <?= $addressForm->field($userAddress, 'country') ?>
-                <br>
-                <?= $addressForm->field($userAddress, 'zipcode') ?>
-                <br>
-                <button class="btn btn-primary">Update</button>
-                <?php ActiveForm::end() ?>
-                <?php \yii\widgets\Pjax::end()?>
+               <?php echo $this->render('user_address',[
+                       'userAddress'=>$userAddress
+]);?>
             </div>
         </div>
     </div>

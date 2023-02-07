@@ -101,6 +101,11 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionView($model){
+        die();
+}
+
+
     /**
      * Logs in a user.
      *

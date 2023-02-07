@@ -7,11 +7,8 @@ use yii\bootstrap4\ActiveForm;
 /* @var $userAddress */
 /* @var $success bool */
 ?>
-<?php \yii\widgets\Pjax::begin([
-        'enablePushState'=>false
-])?>
 <?php $addressForm = ActiveForm::begin([
-    'action' => ['/site/update-address'],
+    'action' => ['/profile/update-address'],
     'options' => [
         'data-pjax'=>1
     ]
@@ -29,4 +26,3 @@ use yii\bootstrap4\ActiveForm;
     <br>
     <button class="btn btn-primary">Update</button>
 <?php ActiveForm::end() ?>
-<?php \yii\widgets\Pjax::end()?>

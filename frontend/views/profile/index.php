@@ -19,9 +19,13 @@ use yii\bootstrap4\Html;
                 Address Information
             </div>
             <div class="card-body">
+                <?php \yii\widgets\Pjax::begin([
+                    'enablePushState' => false
+                ]) ?>
                <?php echo $this->render('user_address',[
                        'userAddress'=>$userAddress
 ]);?>
+                <?php \yii\widgets\Pjax::end() ?>
             </div>
         </div>
     </div>
@@ -31,9 +35,13 @@ use yii\bootstrap4\Html;
                 Account Information
             </div>
             <div class="card-body">
+                <?php \yii\widgets\Pjax::begin([
+                    'enablePushState'=>false
+                ])?>
                 <?php echo $this->render('user_account',[
                     'user'=>$user
                 ]);?>
+                <?php \yii\widgets\Pjax::end()?>
             </div>
         </div>
     </div>

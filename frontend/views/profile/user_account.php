@@ -8,11 +8,9 @@ use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
 
 ?>
-<?php \yii\widgets\Pjax::begin([
-    'enablePushState' => false
-]) ?>
+
 <?php $form = ActiveForm::begin([
-    'action' => ['/site/update-account'],
+    'action' => ['/profile/update-account'],
         'options' => [
             'data-pjax' => 1
         ]
@@ -35,4 +33,4 @@ use yii\helpers\Html;
 </div>
 
 <?php ActiveForm::end(); ?>
-<?php \yii\widgets\Pjax::end() ?>
+

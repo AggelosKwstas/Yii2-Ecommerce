@@ -104,6 +104,16 @@ class ProductController extends Controller
         ]);
     }
 
+    public function actionGraphs(){
+        $active = Product::find()->published()->count();
+        $all = Product::find()->count();
+        $non = intval($all)-intval($active);
+        return $this->render('graphs',[
+            'non'=>$non,
+            'active'=>$active
+        ]);
+    }
+
     /**
      * Deletes an existing Product model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

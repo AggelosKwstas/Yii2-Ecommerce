@@ -48,7 +48,7 @@ AppAsset::register($this);
             'items' => [
                 [
                     'label' => 'Profile',
-                    'url' => ['/profile/'],
+                    'url' => ['/profile/index'],
                 ],
                 [
                     'label' => 'Logout',

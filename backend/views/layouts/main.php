@@ -22,9 +22,8 @@ AppAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body id="page-top" onload="loadWait()">
+    <body id="page-top" onload="loadWait();">
     <?php $this->beginBody() ?>
-    <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -71,7 +70,7 @@ AppAsset::register($this);
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/graphs']) ?>">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Statistics</span></a>
             </li>

@@ -14,6 +14,7 @@ use yii\web\UploadedFile;
  */
 class ProductController extends Controller
 {
+
     /**
      * @inheritDoc
      */
@@ -39,6 +40,10 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
+        Yii::$app->view->params['customParam'] = 'customValue';
+        $this->view->params['customParam'] = 'customValue';
+
+
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -69,7 +74,7 @@ class ProductController extends Controller
     public function actionCreate()
     {
         $model = new Product();
-        $model->imageFile = UploadedFile::getInstance($model,'imageFile');
+        $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -104,13 +109,46 @@ class ProductController extends Controller
         ]);
     }
 
-    public function actionGraphs(){
+    public function actionGraphs()
+    {
+
+        $data = array();
+
+        $ch = curl_init();
+
+        $url = 'https://api.weatherapi.com/v1/current.json?key=eae563f0820642afa2692004230802&q=Ioannina';
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $resp = curl_exec($ch);
+
+        if ($e = curl_error($ch)) {
+            echo $e;
+        } else {
+            $decoded = json_decode($resp, true);
+            $data[] = $decoded['location']['name'];
+            $data[] = $decoded['location']['localtime'];
+            $data[1] = substr($data[1], 11, 16);
+            $data[] = $decoded['current']['temp_c'];
+            $data[] = $decoded['current']['condition']['text'];
+            $data[] = $decoded['current']['wind_mph'];
+            $data[] = $decoded['current']['humidity'];
+            $data[] = $decoded['current']['condition']['icon'];
+            $image = $decoded['current']['condition']['icon'];
+        }
+        curl_close($ch);
+
+
         $active = Product::find()->published()->count();
         $all = Product::find()->count();
-        $non = intval($all)-intval($active);
-        return $this->render('graphs',[
-            'non'=>$non,
-            'active'=>$active
+        $non = intval($all) - intval($active);
+        return $this->render('graphs', [
+            'non' => $non,
+            'active' => $active,
+            'data' => $data,
+            'image' => $image,
+            'decoded' => $decoded
         ]);
     }
 

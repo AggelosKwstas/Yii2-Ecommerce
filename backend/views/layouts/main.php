@@ -18,7 +18,7 @@ AppAsset::register($this);
         <meta charset="<?= Yii::$app->charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <?php $this->registerCsrfMetaTags() ?>
-        <?php $this->title='Bob-X' ?>
+        <?php $this->title = 'Bob-X' ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
@@ -34,8 +34,8 @@ AppAsset::register($this);
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div style="margin: auto">
-                <img width="80%" style="margin-left: 15%"
-                     src="img/sss.png" title="Bob-X-Αρχική Σελίδα">
+                    <img width="80%" style="margin-left: 15%"
+                         src="img/sss.png" title="Bob-X-Αρχική Σελίδα">
                 </div>
                 <div class="sidebar-brand-text mx-3"></div>
             </a>
@@ -45,7 +45,7 @@ AppAsset::register($this);
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -129,7 +129,6 @@ AppAsset::register($this);
                         </li>
 
 
-
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -137,15 +136,15 @@ AppAsset::register($this);
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    <?php echo Yii::$app->user->identity->getDisplayName()?>
+                                    <?php echo Yii::$app->user->identity->getDisplayName() ?>
                                 </span>
                                 <img
-                                     src="img/user.png" style="width: 25px">
+                                        src="img/user.png" style="width: 25px">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item"   href="<?php echo \yii\helpers\Url::to(['site/profile'])?>">
+                                <a class="dropdown-item" href="<?php echo \yii\helpers\Url::to(['site/profile']) ?>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -165,52 +164,52 @@ AppAsset::register($this);
                     <?php echo $content ?>
                 </div>
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Aggelos Kwstas 2023</span>
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Aggelos Kwstas 2023</span>
+                        </div>
                     </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a data-method="Post"
-                       class="btn btn-primary"
-                       href="<?php echo \yii\helpers\Url::to(['site/logout'])?>">Logout</a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a data-method="Post"
+                           class="btn btn-primary"
+                           href="<?php echo \yii\helpers\Url::to(['site/logout']) ?>">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         <div class="loader-wrapper">
             <span class="loader"><span class="loader-inner"></span></span>
         </div>
-    <?php $this->endBody() ?>
+        <?php $this->endBody() ?>
     </body>
     </html>
 <?php $this->endPage();

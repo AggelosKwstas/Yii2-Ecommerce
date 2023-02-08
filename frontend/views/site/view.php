@@ -1,5 +1,7 @@
 <?php
+use frontend\assets\AppAsset;
 use yii\helpers\Html;
+AppAsset::register($this);
 ?>
 
 <section class="py-5">
@@ -15,7 +17,7 @@ use yii\helpers\Html;
                 <p class="lead"><?php echo \yii\helpers\StringHelper::truncateWords($product->description,30)?></p>
                 <div class="d-flex">
                     <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button" id="cartButton">
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
                     </button>

@@ -22,40 +22,34 @@ AppAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body id="page-top" onload="loadWait();">
+    <body id="page-top" style="background-color: #f9f9fb" onload="loadWait();" class="sidebar-toggled">
     <?php $this->beginBody() ?>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
+            <div style="background-color: white">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div style="margin: auto">
-                    <img width="80%" style="margin-left: 15%"
-                         src="img/sss.png" title="Bob-X-Αρχική Σελίδα">
-                </div>
+                    <img width="100%" style="top: 40px"
+                         src="img/gaiaLogo.png" title="Bob-X-Αρχική Σελίδα">
+                    </div>
                 <div class="sidebar-brand-text mx-3"></div>
             </a>
-
+            </div>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="">
+                <a class="nav-link">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -65,9 +59,9 @@ AppAsset::register($this);
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/index']) ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Products</span></a>
+                    <span>Graphs</span></a>
             </li>
-
+            <hr class="sidebar-divider my-0">
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/graphs']) ?>">
@@ -77,11 +71,6 @@ AppAsset::register($this);
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
 
         </ul>
         <!-- End of Sidebar -->
@@ -180,10 +169,7 @@ AppAsset::register($this);
         </div>
         <!-- End of Page Wrapper -->
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
+
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

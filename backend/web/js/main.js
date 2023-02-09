@@ -9,7 +9,6 @@ document.getElementById("btnReset").onclick = function () {
     document.getElementById("productsearch-globalsearch").value = ""
 }
 
-
 function makeBarChart(active, non) {
     var colorPalette = ['#08ff00', '#ff001e'];
     return {

@@ -24,7 +24,7 @@ class ProductController extends Controller
             parent::behaviors(),
             [
                 'verbs' => [
-                    'class' => VerbFilter::className(),
+                    'class' => VerbFilter::class,
                     'actions' => [
                         'delete' => ['POST'],
                     ],
@@ -40,10 +40,6 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
-        Yii::$app->view->params['customParam'] = 'customValue';
-        $this->view->params['customParam'] = 'customValue';
-
-
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -133,7 +129,7 @@ class ProductController extends Controller
             $data[] = $decoded['current']['temp_c'];
             $data[] = $decoded['current']['condition']['text'];
             $data[] = $decoded['current']['wind_mph'];
-            $data[] = $decoded['current']['humidity'];
+            $data[] = $decoded['current']['feelslike_c'];
             $data[] = $decoded['current']['condition']['icon'];
             $image = $decoded['current']['condition']['icon'];
         }

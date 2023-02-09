@@ -11,8 +11,26 @@ AppAsset::register($this);
 <div class="row">
     <div class="col">
 <div class="card">
-    <div id="barChart" style="width: 300px;height:300px;margin-left: 15px"></div>
+    <div id="barChart" style="width: 90%;height:100%"></div>
 </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div id="barChart2"style="width: 100%;height:100%"></div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div id="barChart3" style="width: 90%;height:100%"></div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div id="barChart" style="width: 300px;height:300px;margin-left: 15px"></div>
+        </div>
     </div>
     <div class="col">
         <div class="card">

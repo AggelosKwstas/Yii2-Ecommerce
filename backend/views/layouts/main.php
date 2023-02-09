@@ -36,7 +36,7 @@ AppAsset::register($this);
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div style="margin: auto">
                     <img width="100%" style="top: 40px"
-                         src="img/weatherapi_logo.webp" title="Bob-X-Αρχική Σελίδα">
+                         src="img/gaiaLogo.png" title="Bob-X-Αρχική Σελίδα">
                     </div>
                 <div class="sidebar-brand-text mx-3"></div>
             </a>

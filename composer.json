@@ -21,7 +21,9 @@
         "yiisoft/yii2-bootstrap4": "^2.0",
         "2amigos/yii2-ckeditor-widget": "2.1.0",
         "symfony/mailer": "^5.4",
-        "yiisoft/yii2-swiftmailer": "^2.1"
+        "yiisoft/yii2-swiftmailer": "^2.1",
+        "components/font-awesome": "^6.2",
+        "rmrevin/yii2-fontawesome": "2.10.*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

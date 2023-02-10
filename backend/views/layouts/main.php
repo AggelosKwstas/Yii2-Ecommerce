@@ -5,6 +5,7 @@
 /** @var string $content */
 
 use backend\assets\AppAsset;
+use backend\assets\FontAwesomeAsset;
 use yii\helpers\Html;
 
 
@@ -32,23 +33,21 @@ AppAsset::register($this);
         <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <div style="background-color: white">
+            <div style="background-color: white;">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div style="margin: auto">
-                    <img width="100%" style="top: 40px"
-                         src="img/gaiaLogo.png" title="Bob-X-Αρχική Σελίδα">
-                    </div>
-                <div class="sidebar-brand-text mx-3"></div>
+                    <img src="img/saved.png" style="width: 210px;height: 150px" title="Αρχική Σελίδα">
             </a>
             </div>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li id="homeIcon" class="nav-item">
+                <br>
                 <a class="nav-link">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <i class="fa fa-solid fa-house-user"></i>
+                    <span><b>Home</b></span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -56,19 +55,27 @@ AppAsset::register($this);
 
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li id="graphIcon" class="nav-item">
                 <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/index']) ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Graphs</span></a>
+                    <i class="fa fa-chart-bar"></i>
+                    <span><b>Graphs</b></span></a>
             </li>
+
+            <hr class="sidebar-divider">
+            <li id="mapNav" class="nav-item">
+                <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/index']) ?>">
+                    <i class="fa fa-solid fa-map-marked-alt"></i>
+                    <span><b>Map</b></span></a>
+            </li>
+
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Tables -->
             <li class="nav-item">
+                <br>
                 <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/graphs']) ?>">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Statistics</span></a>
+                    <span><b>Statistics</b></span></a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -77,10 +84,8 @@ AppAsset::register($this);
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -117,33 +122,46 @@ AppAsset::register($this);
                             </div>
                         </li>
 
+                        <div clas="nav-item">
+                            <p3 style="color: #31343a"><b>Follow us on:</b></p3>
+                            <a href="https://www.linkedin.com/company/neuron-energy-solutions/about/" style="color: #31343a">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.neuronenergy.com/" style="color: #31343a">
+                                <i class="fa fa-regular fa-globe"></i>
+                            </a>
+                        </div>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    <?php echo Yii::$app->user->identity->getDisplayName() ?>
-                                </span>
-                                <img
-                                        src="img/user.png" style="width: 25px">
+                        <div clas="nav-item">
+                            <a href="#" style="color: #31343a">
+                            <i class="fas fa-sign-in-alt">  <b>Login</b></i>
                             </a>
+                        </div>
+                        <!-- Nav Item - User Information -->
+<!--                        <li class="nav-item dropdown no-arrow">-->
+<!--                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"-->
+<!--                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">-->
+<!--                                    --><?php //echo Yii::$app->user->identity->getDisplayName() ?>
+<!--                                </span>-->
+<!--                                <img-->
+<!--                                        src="img/user.png" style="width: 25px">-->
+<!--                            </a>-->
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="<?php echo \yii\helpers\Url::to(['site/profile']) ?>">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
+<!--                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"-->
+<!--                                 aria-labelledby="userDropdown">-->
+<!--                                <a class="dropdown-item" href="--><?php //echo \yii\helpers\Url::to(['site/profile']) ?><!--">-->
+<!--                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>-->
+<!--                                    Profile-->
+<!--                                </a>-->
+<!--                                <div class="dropdown-divider"></div>-->
+<!--                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">-->
+<!--                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>-->
+<!--                                    Logout-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </li>-->
 
                     </ul>
 
@@ -154,10 +172,10 @@ AppAsset::register($this);
                 </div>
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
+                <footer class="sticky-footer bg-white" style="margin-top: auto;">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Aggelos Kwstas 2023</span>
+                            <span>© 2023 | Neuron Energy Solutions. All rights reserved.</span>
                         </div>
                     </div>
                 </footer>

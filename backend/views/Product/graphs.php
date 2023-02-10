@@ -4,45 +4,54 @@ use backend\assets\AppAsset;
 use yii\helpers\Html;
 
 AppAsset::register($this);
+
 ?>
 
 
 <body>
-<div class="row">
-    <div class="col">
+<table>
+<tr>
+    <td>
 <div class="card">
     <div id="barChart" style="width: 90%;height:100%"></div>
 </div>
-    </div>
-    <div class="col">
+    </td>
+
+    <td>
         <div class="card">
             <div id="barChart2"style="width: 100%;height:100%"></div>
         </div>
-    </div>
-    <div class="col">
+    </td>
+    <td>
         <div class="card">
             <div id="barChart3" style="width: 90%;height:100%"></div>
         </div>
-    </div>
-</div>
-<br>
-<div class="row">
-    <div class="col">
+    </td>
+</tr>
+<tr>
+    <td>
         <div class="card">
-            <div id="barChart" style="width: 300px;height:300px;margin-left: 15px"></div>
+            <div id="barChart11" style="width: 100%;height:100%;"></div>
         </div>
-    </div>
-    <div class="col">
+    </td>
+    <td>
         <div class="card">
-            <div id="barChart2" style="width: 530px;height:300px;margin-left: 15px"></div>
+            <div id="barChart22" style="width: 100%;height:100%;"></div>
         </div>
-    </div>
-    <div class="col">
+    </td>
+    <td>
         <div class="card">
-            <div id="barChart3" style="width: 300px;height:300px;margin-left: 15px"></div>
+            <div id="barChart33" style="width: 100%;height:100%;"></div>
         </div>
-    </div>
-</div>
+
+    </td>
+</tr>
+
+</table>
+
+
+
+
 
 <!---->
 <!--<div class="py-5">-->
@@ -102,9 +111,19 @@ $script = <<< JS
 let barChart = echarts.init(document.getElementById('barChart'));
 let barChart2 = echarts.init(document.getElementById('barChart2'));
 let barChart3 = echarts.init(document.getElementById('barChart3'));
-barChart.setOption(makeBarChart($active,$non));
+
+let barChart11 = echarts.init(document.getElementById('barChart11'));
+let barChart22 = echarts.init(document.getElementById('barChart22'));
+let barChart33 = echarts.init(document.getElementById('barChart33'));
+
+barChart11.setOption(makeBarChart($active,$non));
+barChart22.setOption(makeBarChart(10,23));
+barChart33.setOption(makeBarChart(23,50));
+
+//barChart.setOption(makeBarChart($active,$non));
+barChart.setOption(makeBlueChart());
 barChart2.setOption(makeBlueChart());
-barChart3.setOption(makeBarChart($active,$non));
+barChart3.setOption(makeBlueChart());
 JS;
 $this->registerJs($script);
 ?>

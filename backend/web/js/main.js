@@ -1,6 +1,7 @@
 function loadWait() {
     Loader.open();
     setTimeout(() => {
+        $(".loader-wrapper").fadeOut("slow");
         Loader.close()
     }, 500);
 }
@@ -26,7 +27,7 @@ function makeBlueChart(){
         },
         title: {
             left: 'center',
-            text: 'Large Ara Chart'
+            text: 'PM 1.0'
         },
         toolbox: {
             feature: {

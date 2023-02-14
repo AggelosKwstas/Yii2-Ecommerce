@@ -10,47 +10,44 @@ AppAsset::register($this);
 
 <body>
 <table>
-<tr>
-    <td>
-<div class="card">
-    <div id="barChart" style="width: 90%;height:100%"></div>
-</div>
-    </td>
+    <tr>
+        <td>
+            <div class="card">
+                <div id="barChart" style="width: 100%;height:100%"></div>
+            </div>
+        </td>
 
-    <td>
-        <div class="card">
-            <div id="barChart2"style="width: 100%;height:100%"></div>
-        </div>
-    </td>
-    <td>
-        <div class="card">
-            <div id="barChart3" style="width: 90%;height:100%"></div>
-        </div>
-    </td>
-</tr>
-<tr>
-    <td>
-        <div class="card">
-            <div id="barChart11" style="width: 100%;height:100%;"></div>
-        </div>
-    </td>
-    <td>
-        <div class="card">
-            <div id="barChart22" style="width: 100%;height:100%;"></div>
-        </div>
-    </td>
-    <td>
-        <div class="card">
-            <div id="barChart33" style="width: 100%;height:100%;"></div>
-        </div>
-
-    </td>
-</tr>
+        <td>
+            <div class="card">
+                <div id="barChart2" style="width: 100%;height:100%"></div>
+            </div>
+        </td>
+        <td>
+            <div class="card">
+                <div id="barChart3" style="width: 100%;height:100%"></div>
+            </div>
+        </td>
+    </tr>
+    <!--<tr>-->
+    <!--    <td>-->
+    <!--        <div class="card">-->
+    <!--            <div id="barChart11" style="width: 100%;height:100%;"></div>-->
+    <!--        </div>-->
+    <!--    </td>-->
+    <!--    <td>-->
+    <!--        <div class="card">-->
+    <!--            <div id="barChart22" style="width: 100%;height:100%;"></div>-->
+    <!--        </div>-->
+    <!--    </td>-->
+    <!--    <td>-->
+    <!--        <div class="card">-->
+    <!--            <div id="barChart33" style="width: 100%;height:100%;"></div>-->
+    <!--        </div>-->
+    <!---->
+    <!--    </td>-->
+    <!--</tr>-->
 
 </table>
-
-
-
 
 
 <!---->
@@ -79,7 +76,8 @@ AppAsset::register($this);
 <!--                                <div class="d-flex flex-column text-center mt-5 mb-4">-->
 <!--                                    <h6 class="display-4 mb-0 font-weight-bold"-->
 <!--                                        style="color: #1C2331;"> --><?php //echo $data[2] ?><!--°C </h6>-->
-<!--                                    <span class="small" style="color: #868B94">--><?php //echo $data[3] ?><!--</span>-->
+<!--                                    <span class="small" style="color: #868B94">-->
+<?php //echo $data[3] ?><!--</span>-->
 <!--                                </div>-->
 <!---->
 <!--                                <div class="d-flex align-items-center">-->
@@ -112,13 +110,13 @@ let barChart = echarts.init(document.getElementById('barChart'));
 let barChart2 = echarts.init(document.getElementById('barChart2'));
 let barChart3 = echarts.init(document.getElementById('barChart3'));
 
-let barChart11 = echarts.init(document.getElementById('barChart11'));
-let barChart22 = echarts.init(document.getElementById('barChart22'));
-let barChart33 = echarts.init(document.getElementById('barChart33'));
+// let barChart11 = echarts.init(document.getElementById('barChart11'));
+// let barChart22 = echarts.init(document.getElementById('barChart22'));
+// let barChart33 = echarts.init(document.getElementById('barChart33'));
 
-barChart11.setOption(makeBarChart($active,$non));
-barChart22.setOption(makeBarChart(10,23));
-barChart33.setOption(makeBarChart(23,50));
+//barChart11.setOption(makeBarChart($active,$non));
+//barChart22.setOption(makeBarChart(10,23));
+//barChart33.setOption(makeBarChart(23,50));
 
 //barChart.setOption(makeBarChart($active,$non));
 barChart.setOption(makeBlueChart());

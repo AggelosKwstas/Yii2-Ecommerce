@@ -23,7 +23,7 @@ AppAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body id="page-top" style="background-color: #f9f9fb" onload="loadWait();" class="sidebar-toggled">
+    <body id="page-top" style="background-color: #f9f9fb" onload="loadWait()" class="sidebar-toggled">
     <?php $this->beginBody() ?>
 
     <!-- Page Wrapper -->
@@ -35,15 +35,15 @@ AppAsset::register($this);
             <!-- Sidebar - Brand -->
             <div style="background-color: white;">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <img src="img/saved.png" style="width: 210px;height: 150px" title="Αρχική Σελίδα">
+                    <img src="img/gaiaTransparent.ico" style="width: 80px;height: 50px; margin-right: 15px" title="Αρχική Σελίδα">
             </a>
             </div>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li id="homeIcon" class="nav-item">
-                <br>
+            <li class="nav-item">
+<!--                <br>-->
                 <a class="nav-link">
                     <i class="fa fa-solid fa-house-user"></i>
                     <span><b>Home</b></span>
@@ -56,7 +56,7 @@ AppAsset::register($this);
 
             <!-- Nav Item - Charts -->
             <li id="graphIcon" class="nav-item">
-                <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/index']) ?>">
+                <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/graphs']) ?>">
                     <i class="fa fa-chart-bar"></i>
                     <span><b>Graphs</b></span></a>
             </li>
@@ -88,16 +88,15 @@ AppAsset::register($this);
             <div id="content">
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <div style="margin-left: auto; color: #31343a "><span style="font-weight: bolder; font-size: 25px;color: #31343a">GAIA Platform</span></div>
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
+                        <p3 id="date-id" style="color: #31343a;font-weight: bold"></p3>
+                        <div class="topbar-divider d-none d-sm-block"></div>
                         <div clas="nav-item">
                             <p3 style="color: #31343a"><b>Follow us on:</b></p3>
                             <a href="https://www.linkedin.com/company/neuron-energy-solutions/about/" style="color: #31343a">
@@ -105,13 +104,6 @@ AppAsset::register($this);
                             </a>
                             <a href="https://www.neuronenergy.com/" style="color: #31343a">
                                 <i class="fa fa-regular fa-globe"></i>
-                            </a>
-                        </div>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <div clas="nav-item">
-                            <a href="#" style="color: #31343a">
-                            <i class="fas fa-sign-in-alt">  <b>Login</b></i>
                             </a>
                         </div>
                         <!-- Nav Item - User Information -->

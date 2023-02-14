@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\LoginForm;
 use common\models\Product;
 use backend\models\ProductSearch;
 use yii\web\Controller;
@@ -85,6 +86,8 @@ class ProductController extends Controller
         ]);
     }
 
+
+
     /**
      * Updates an existing Product model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -102,6 +105,13 @@ class ProductController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionLogin(){
+        $model = new LoginForm();
+        return $this->render('login',[
+            'model'=>$model,
         ]);
     }
 

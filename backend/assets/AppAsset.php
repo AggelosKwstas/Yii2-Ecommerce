@@ -21,7 +21,6 @@ class AppAsset extends AssetBundle
         'css/loader.css'
     ];
     public $js = [
-        'vendor/jquery-easing/jquery.easing.min.js',
         'js/sb-admin-2.min.js',
         'js/main.js',
         'js/loader.js',

@@ -1,3 +1,9 @@
+
+$(document).ready(function(){
+    let s= new Date().toLocaleString();
+    $('#date-id').text(s);
+});
+
 function loadWait() {
     Loader.open();
     setTimeout(() => {
@@ -11,6 +17,7 @@ document.getElementById("btnReset").onclick = function () {
 }
 
 function makeBlueChart(){
+    let colorPalette = ['rgb(124, 181, 236)'];
     let base = +new Date(1988, 9, 3);
     let oneDay = 24 * 3600 * 1000;
     let data = [[base, Math.random() * 300]];
@@ -40,38 +47,56 @@ function makeBlueChart(){
         },
         xAxis: {
             type: 'time',
-            boundaryGap: false
+            showGrid: false,
+            boundaryGap: false,
         },
         yAxis: {
             type: 'value',
-            boundaryGap: [0, '100%']
+            showGrid: false,
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: true
+            },
         },
         dataZoom: [
             {
                 type: 'inside',
                 start: 0,
-                end: 20
             },
             {
                 start: 0,
-                end: 20
             }
         ],
         series: [
             {
+                z2:9,
+                z: 9,
+                color: colorPalette,
                 name: 'Fake Data',
                 type: 'line',
                 smooth: true,
                 symbol: 'none',
                 areaStyle: {},
-                data: data
+                data: data,
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: '#FFFFFF'
+                        },
+                        {
+                            offset: 1,
+                            color: '#FFFFFF'
+                        },
+                    ])
+                },
             }
-        ]
+        ],
     };
 }
 
 function makeBarChart(active, non) {
-    var colorPalette = ['#08ff00', '#ff001e'];
+    let colorPalette = ['#08ff00', '#ff001e'];
     return {
         title: {
             text: 'Product Status',

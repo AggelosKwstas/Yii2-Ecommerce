@@ -35,7 +35,7 @@ AppAsset::register($this);
             <!-- Sidebar - Brand -->
             <div style="background-color: white;">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <img src="img/gaiaTransparent.ico" style="width: 80px;height: 50px; margin-right: 15px" title="Αρχική Σελίδα">
+                    <img src="img/leaflogo.png" style="width: 230px;height: 230px; margin-left: 5px; margin-right: 15px;margin-top: 25px" title="Αρχική Σελίδα">
             </a>
             </div>
             <!-- Divider -->
@@ -56,14 +56,17 @@ AppAsset::register($this);
 
             <!-- Nav Item - Charts -->
             <li id="graphIcon" class="nav-item">
-                <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/graphs']) ?>">
+                <a class="nav-link" onclick="makeGraphActive()" href="<?php echo \yii\helpers\Url::to(['product/graphs']) ?>">
                     <i class="fa fa-chart-bar"></i>
                     <span><b>Graphs</b></span></a>
             </li>
 
             <hr class="sidebar-divider">
-            <li id="mapNav" class="nav-item">
-                <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/index']) ?>">
+            <li id="mapNav" class="nav-item <?php
+            if(\yii\helpers\Url::current()==\yii\helpers\Url::to(['product/map']))
+                echo 'active';
+            ?>">
+                <a class="nav-link active" href="<?php  echo \yii\helpers\Url::to(['product/map']) ?>">
                     <i class="fa fa-solid fa-map-marked-alt"></i>
                     <span><b>Map</b></span></a>
             </li>
@@ -72,7 +75,7 @@ AppAsset::register($this);
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <br>
-                <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['product/graphs']) ?>">
+                <a class="nav-link active" href="<?php echo \yii\helpers\Url::to(['product/graphs']) ?>">
                     <i class="fas fa-fw fa-table"></i>
                     <span><b>Statistics</b></span></a>
             </li>
@@ -87,7 +90,7 @@ AppAsset::register($this);
             <!-- Main Content -->
             <div id="content">
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -131,52 +134,27 @@ AppAsset::register($this);
 <!--                            </div>-->
 <!--                        </li>-->
                     </ul>
-
                 </nav>
-                <!-- End of Topbar -->
-                <div class="p-4">
+                <div>
                     <?php echo $content ?>
                 </div>
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white" style="margin-top: auto;">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>© 2023 | Neuron Energy Solutions. All rights reserved.</span>
-                        </div>
-                    </div>
-                </footer>
+
                 <!-- End of Footer -->
 
             </div>
             <!-- End of Content Wrapper -->
-
+            <footer class="sticky-footer bg-white" style="margin-top: auto;">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span style="color: #31343a;font-weight: bold"><b>© 2023 | Neuron Energy Solutions. All rights reserved.</b></span>
+                    </div>
+                </div>
+            </footer>
         </div>
         <!-- End of Page Wrapper -->
 
-
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a data-method="Post"
-                           class="btn btn-primary"
-                           href="<?php echo \yii\helpers\Url::to(['site/logout']) ?>">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="loader-wrapper">
             <span class="loader"><span class="loader-inner"></span></span>
         </div>

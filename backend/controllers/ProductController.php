@@ -115,6 +115,10 @@ class ProductController extends Controller
         ]);
     }
 
+    public function actionMap(){
+        return $this->render('map');
+    }
+
     public function actionGraphs()
     {
 

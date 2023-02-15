@@ -45,7 +45,7 @@ return [
         ],
         'assetManager' => [
             'bundles' => [
-                \yii\bootstrap4\BootstrapAsset::class => false
+                \yii\bootstrap\BootstrapAsset::class => false
             ]
         ],
         'urlManager' => [

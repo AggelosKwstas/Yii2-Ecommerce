@@ -12,18 +12,18 @@ AppAsset::register($this);
 <table>
     <tr>
         <td>
-            <div class="card">
+            <div id="card-container">
                 <div id="barChart" style="width: 100%;height:100%"></div>
             </div>
         </td>
 
         <td>
-            <div class="card">
+            <div id="card-container">
                 <div id="barChart2" style="width: 100%;height:100%"></div>
             </div>
         </td>
         <td>
-            <div class="card">
+            <div id="card-container">
                 <div id="barChart3" style="width: 100%;height:100%"></div>
             </div>
         </td>

@@ -19,7 +19,8 @@ class AppAsset extends AssetBundle
         'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css',
         'https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i',
         'css/sb-admin-2.min.css',
-        'css/loader.css'
+        'css/loader.css',
+        'css/style.css'
     ];
     public $js = [
         'js/jquery-easing/jquery.easing.min.js',
@@ -29,6 +30,9 @@ class AppAsset extends AssetBundle
         'js/main.js',
         'js/loader.js',
         'js/echarts.js',
+        'js/popper.js',
+        'js/bootstrap.min.js',
+        'js/main_side.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

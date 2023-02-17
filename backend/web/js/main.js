@@ -3,12 +3,12 @@ $(document).ready(function(){
     makeGraphActive()
     let s= new Date().toLocaleString();
     $('#date-id').text(s);
-    var map = L.map('map').setView([39.6650, 20.8537], 13);
+    var map = L.map('map',{zoomControl:false}).setView([39.6650, 20.8537], 13);
 
-    var Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?apikey=9d4361a8-0fc2-44a2-87de-b552b708b017', {
-            minZoom:10,
-            maxZoom: 17,
-        attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        minZoom:10,
+        maxZoom: 17,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
     var greenIcon = L.icon({
@@ -17,16 +17,11 @@ $(document).ready(function(){
         iconAnchor: [20, 35],
         popupAnchor: [0, -30]
     });
-    L.marker([39.6650, 20.8537], {icon: greenIcon}).addTo(map).bindPopup('' +
+    L.marker([39.6650, 20.8537], {icon: greenIcon}).addTo(map).bindPopup('<h3>Station Content</h3>' +
         '' +
         '' +
         '' +
         '');
-    // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //     minZoom:10,
-    //     maxZoom: 17,
-    //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    // }).addTo(map);
 });
 
 function makeGraphActive(){
@@ -171,3 +166,4 @@ function makeBarChart(active, non) {
         }
     };
 }
+
